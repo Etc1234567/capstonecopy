@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -11,12 +11,10 @@
     <h1>User Profile</h1>
     </header>
     <h2>Personal Information</h2>
-    <p><strong>Username: </strong>Username</p>
-    <p><strong>Name: </strong>NAME</p>
-    <p><strong>Email: </strong>name@email.com</p>
-    <p><strong>Location: </strong>USA</p>
-    <p><strong>Vacations Taken: </strong>50</p>
+    <p><strong>Username: </strong></p><p th:field="${user.username}"></p>
+    <p><strong>Name: </strong></p> <p th:field="${user.name}"></p>
+    <p><strong>Location: </strong>${user.location}</p> <p th:field="${user.email}"></p>
+    <p><strong>Vacations Taken: </strong>${user.numOfVacations}</p> <p th:field="${user.passwordHash}"></p>
 </body>
 </html>
 
-// TODO: Update names to template literals?

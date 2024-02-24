@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head}">
+</head>
+
+<nav th:replace="~{fragments :: header}"></nav>
+<body>
+
+<div>
+    <h2 class="form-control form-control-lg">Are you sure?</h2>
+
+    <form method="post">
+        <!-- Yes button -->
+        <button type="submit" class="btn btn-primary" name="isDeleted" value="true">Yes</button>
+
+        <!-- No button -->
+        <button type="submit" class="btn btn-danger" name="isDeleted" value="false">No</button>
+    </form>
+</div>
+
+
+
+
+</body>
+</html>

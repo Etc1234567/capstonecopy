@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/org.launchcode.professional-procrastinators.iml" filepath="$PROJECT_DIR$/.idea/modules/org.launchcode.professional-procrastinators.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/org.launchcode.professional-procrastinators.main.iml" filepath="$PROJECT_DIR$/.idea/modules/org.launchcode.professional-procrastinators.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/org.launchcode.professional-procrastinators.test.iml" filepath="$PROJECT_DIR$/.idea/modules/org.launchcode.professional-procrastinators.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/professional-procrastinators.iml" filepath="$PROJECT_DIR$/.idea/professional-procrastinators.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/professional-procrastinators.iml" filepath="$PROJECT_DIR$/.idea/modules/professional-procrastinators.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/professional-procrastinators.main.iml" filepath="$PROJECT_DIR$/.idea/modules/professional-procrastinators.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/professional-procrastinators.test.iml" filepath="$PROJECT_DIR$/.idea/modules/professional-procrastinators.test.iml" />
     </modules>

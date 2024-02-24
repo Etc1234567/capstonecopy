@@ -1,20 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<html lang = "en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head}">
+
+
     <title>User Profile</title>
+    <style>
+        body{
+             font-family: Courier, 'Times New Roman';
+        }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
 </head>
+<nav th:replace="~{fragments :: header}"></nav>
 <body>
     <header>
     <h1>User Profile</h1>
     </header>
     <h2>Personal Information</h2>
-    <p><strong>Username: </strong>${user.username}</p>
-    <p><strong>Name: </strong>${user.name}</p>
-    <p><strong>Location: </strong>${user.location}</p>
-    <p><strong>Vacations Taken: </strong>${user.numOfVacations}</p>
+    <p><strong>Username: </strong></p><p th:text="${username}"></p>
+    <p><strong>Name: </strong></p> <p th:text="${name}"></p>
+    <p><strong>Email: </strong></p> <p th:text="${email}"></p>
+<!--    <p><strong>Password: </strong></p> <p th:text="${passwordHash}"></p>-->
+
+    <a type="button" class="btn btn-danger" href="/delete_profile">Delete</a>
 </body>
 </html>
-

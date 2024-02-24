@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+<head th:replace="~{fragments :: head}"></head>
+
+
+<nav th:replace="~{fragments :: header}"></nav>
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-    <title>Error</title>
+    <title>Nomad Nirvana</title>
 </head>
 <body>
-<header>
-    <h1>There has been and error</h1>
-</header>
-<p><strong>Please return to the homepage and try again.</strong></p>
+<div>
+    <h1>Error</h1>
+    <p><strong>There has been an error, please return to the home page and try again!</strong></p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQMAAADCCAMAAAB6zFdcAAABJlBMVEX/v2+TX3acaH/t7+7/vW7t7vD1rFzt7vX4jyXtxZ79vWyRX3aPU237vmv7/fz/vmukdYvj4+P217HSx9Hr7/n10qSaaoGYXXnt7+mOVGrKuMHv8/TVxs2MV2zo6evu8e//1K35z5//37Y/KjOUZHY9JzH4zKL/37OaZYKlcIKJXnJrSVc4KTBDKTT8v2f4zpzq6Nzu5NL4vn3638T6x4ru48i3lJbVqZuXcoaldo/18Pjn9vP2xpeqdoLDkY3Ou73mwKP36+bbs5fVpp+ygIP/1LGve5DPoo3as6Pv4LywhIH3x6OTZXHuzb3wv6e2fnqdZou/koTWq5HMt8qIVXn/26ZQNER0Tl5VL0BhQ09QN0GIR2D25OD0mT7yqGH2vY/umEX1kDs7/wdcAAAGCUlEQVR4nO2dYWOaRhyHA0pTpZbGippgIgQ4EVSW2C3raqyxdWmTbEubKNXNtvv+X2IH2kRtbYydiPJ7XhBB7rh7/N9xh8llYwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA1SEajfp/Sb+veAfUQdxnlqD9+whLIb7sao8iuHGQ8Bc3EpZd7xsSFcH+KRvhInPBRfZmOCub9bZj6fIHYmUjIBqEaDKSp4Waj62tWc5KbXKcJKU2R6+SSknJaGLZtR8gHGZpEeeVMJODrHRQrVYPTlIjF8lmpc38M2HZtR8g2JJXtM05uSOhm/XJz6KiELHK5b0j9HIRjqaLpJJBcSCm8lyu+GSB/CLKNpUgH/062H/+/Mnz9NVv2VQyKP2BmIq8yDHs4sgcFaiDmtwWjw26axjacb3++qX0IkgO8lIus0AHfKMtEyLLYivm7hoXp+e2TRonXJAcRKiD9OIcME2ZKLLHK8YwXjcUQohCksFqCwt28LpNWgMH7d+NU0LbBUWpHYTIAWu+aQ8dyI2YYg8ciLVqmBykNVEeSNiXFbcZUAnKOXkbKgfG2b7bIexTROJRO3+mhKotpA3+qCC2XAWFgjKQQOxqmPpEinbREPc9CrIXBoT8wYXKgXFpmKeF/SEyqdnkz792UqFywDLHbxpEvpWgHF08ugpXHDB1YstN8dbBGZ/O7ORD4+DywjhuEndMEBsEQqEgy+8MltmRQuOANYoxu6bYCol9kSDLrWODCVEcFDPv7dqnGp06k6acdFsCpdDUMiGKA0OjtacSakSJxZL7gxGzWKgzV+GJA/aC2O70gA6RqYS2OJTQOr6KhMZBWju33UkiHRja9euGSDwHSuFNiBywxqk3Oq4pzaJhXLQUd/JkE7kVov6ANXa9W6NSd5+jXdfpLJq4D5WUXIgcUAln75unxUv3dfrafa4m14hMXubzoXFQdB+i8oYx8MFqtFekcVB4Fab7wgTMWasty+2GFqY+cZJr7bTRfHeZ2QnXnGmMomZcG4zGhNkB6/UMRqjmTFMI05wJDtbNQdrkZ6yfOYPQ1XRg6h1tJgVd3bo7t9V04JRUcyYHqtpdKwdpxxl8+GnWVGd1ULJuUlvTTlohB6aqmwMFaUctz+agp/aGuWlqyVl9B2m15FUozWq3VbsD66bROKXSNG2r5MByI5tGAWup+rTPdAJTLX1wbyHp3bLamaYtgOPEbY35JqzWKak9y7HKqt7h2ds3eDbj/v6Ot2HYsTSaparlruP0VLcH+Xa+TBAd8NPKavZKAzrm2Dk8r5mO1e1ajjmZVuvqgySqMy1XZjdoDripcUAneJpV1mksuNUZrSy72ynrbl31cmd3LMk2ozkd+k65a44nWVUHwxKP7/I8w3d1VdVVXac/VJ3WNjOZZCLNyjuYUOC1ELWkfrAcx+qVqYqyeY/0a+Kgo6vlD47mYdKQKHe+6hXW24Hb6dE75e2+U6YS7pXD6jtwaBdgjaZw9JLu3CuLVXdAw0Dvaho/eqSk90LlwKSfurk94oAOFegY6l7d4so7UEudiUPusChUDphdZ7K+vOlMHxOupQNG+/r0bxxabwc/DhzAARzAARzAARzAARzAARzAARzAARzAARzAARysroP7fVu4hg5ePN3WeH/ZDpoDLvf39iN/CZ6DrdxTn8ltBevvF/IcJ3GSNNyMwg033O1L6esTZk8xchXOdRCctcLmXTTvBwlUHGwtiWU6iFbilZsVPSv23t6yHMRuCiH4vZJitHJoK1+wq5vcrItoctzeXdxjDc5s/m37phQJn7uGRPTw8ZxIe99v49K8GT/ze4XZeGLeoj6evA9MMG+22UO/bxGVueNgYfjtQIgfHsy5ju5iyEr/+N0fCFGhSh3k5ytwfipzO8inRL+bQjSREJLSvIvI/t9wqRSXrMT9XmtZeNDvf4wFhPPzTx8f9h8IQtxPC/HP/X7/YWCghfn878N+xddhUvRBEBGCsvJ4aIjH3f+4ECR87xE33GHpsms9js8CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzGfyCAsxbQgzjPAAAAAElFTkSuQmCC">
+</div>
 </body>
 </html>

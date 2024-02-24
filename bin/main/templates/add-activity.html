@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head}"></head>
+
+<body>
+<nav th:replace="~{fragments :: header}"></nav>
+
+<div class="container">
+    <h1> Add Travel Inspiration </h1>
+    <p> Use the form below to save travel inspiration ideas. You can add links for YouTube videos and functionality for other sites will be added in the future. </p>
+
+    <form method="post" style="max-width:600 px">
+        <label for="url">Give your activity a title: </label>
+        <input type="text" id="title" name="title"><br>
+
+        <label for="url">Paste the link: </label>
+        <input type="text" id="url" name="url"><br>
+
+        <label for="notes">Enter any notes here: </label>
+        <input type="text" id="notes" name="notes"></br>
+
+        <div class="form-group">
+            <p> Which vacation is this inspiration for? </p>
+            <th:block th:each="vacation : ${vacations}">
+                <input type="radio" name="vacationId" th:value="${vacation.id}">
+                <label th:text="${vacation.city}"></label><br>
+            </th:block>
+        </div>
+
+        <input type="submit" value="Save">
+    </form>
+</div>
+
+</body>
+</html>

@@ -2,7 +2,6 @@
 <html lang = "en" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="~{fragments :: head}">
-    <script src="professional-procrastinators\nomad-nirvana-ui\src\LikeButton.js"></script>
 </head>
 
 <nav th:replace="~{fragments :: header}"></nav>
@@ -21,15 +20,20 @@
                         </tr>
                     </thead>
                     <tr th:each="vacation: ${vacations}">
-                        <td th:text="${vacation.city}"></td>
+                        <td>
+                            <a th:text="${vacation.city}" th:href="@{'/view/' + ${vacation.id}}"> </a>
+                        </td>
                     </tr>
                 </table>
 
         <div class="indexNav">
+
+<!--            If there are no vacations entered, the page will display the "Oops, no vacations here" message.-->
+
             <p th:unless="${vacations} and ${vacations.size()}">Oops! No vacations here.</p>
-            <a th:href="@{'/add-vacation'}">Add Vacation</a>&nbsp;
-            <a th:href="@{'/delete-vacation'}">Delete Vacation</a>&nbsp;
-            <a th:href="@{'/edit-vacation'}">Edit Vacation</a>&nbsp;
+            <a th:href="@{'/add-vacation'}" class="btn btn-info" role="button">Add Vacation</a>&nbsp;
+            <a th:href="@{'/edit-vacation'}" class="btn btn-info" role="button">Edit Vacation</a>
+            <a th:href="@{'/delete-vacation'}" class="btn btn-danger" role="button">Delete Vacation</a>&nbsp;&nbsp;
         </div>
 </section>
 
@@ -41,77 +45,19 @@
 <!--</div>-->
 <!--TO-DO: Add number of likes-->
 
-<!--TO-DO: Add dropdown select for vacations-->
-<section class="countdownSection">
-    <form id="countdownForm">
-        <label for="countdownDate">Enter Countdown Date:</label>
-        <input type="datetime-local" id="countdownDate" required>
-        <button type="button" onclick="startCountdown()">Start Countdown</button>
-    </form>
-
-    <div id="countdownContainer" style="display: none;">
-        <a data-type="countdown"
-           data-name="Time for vacation in:"
-           data-bg_color="#97B8FF"
-           data-name_color="#008922"
-           data-border_color="#888888"
-           data-dt=""
-           data-timezone="America/Chicago"
-           style="display:block; left:0; width:80%; height:100px; position:relative; padding-bottom:0; margin:0 auto;"
-           class="tickcounter"
-           href="//www.tickcounter.com"
-        >Countdown</a>
-    </div>
-
-    <script>
-        function startCountdown() {
-
-            userInputDate = document.getElementById('countdownDate').value;
-
-            document.getElementById('countdownForm').style.display = 'none';
-
-            document.querySelector('.tickcounter').setAttribute('data-dt', userInputDate);
-
-            document.getElementById('countdownContainer').style.display = 'block';
-
-            loadTickCounterScript();
-        }
-
-        function loadTickCounterScript() {
-
-            (function(d, s, id) {
-                var js, pjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "//www.tickcounter.com/static/js/loader.js";
-                pjs.parentNode.insertBefore(js, pjs);
-            }(document, "script", "tickcounter-sdk"));
-        }
-    </script>
-</section>
-
-<!-- TO-DO: Add weather API-->
-
-<!-- TO-DO: Add local time API-->
-
-<!-- TO-DO: Add Spotify API-->
-
 <section class="video-container" th:if="${activities.size()}">
 
     <div th:each="activity: ${activities}">
 
         <iframe width="560" height="315" th:src="${activity.embedUrl}" allowfullscreen></iframe>
 
-        <p value="${activity.notes}"></p>
-
     </div>
 
 </section>
 
     <div class="activityNav">
-        <a th:href="@{'/add-activity'}">Add Trip Inspiration</a>&nbsp;
-        <a th:href="@{'/delete-activity'}">Delete Trip Inspiration</a>&nbsp;
+        <a th:href="@{'/add-activity'}" class="btn btn-info" role="button">Add Trip Inspiration</a>&nbsp;
+        <a th:href="@{'/delete-activity'}" class="btn btn-danger" role="button">Delete Trip Inspiration</a>&nbsp;
     </div>
 
 </div>

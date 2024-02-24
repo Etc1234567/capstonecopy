@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+    <head th:replace="~{fragments :: head}"></head>
+</head>
+<body>
+<nav th:replace="~{fragments :: header}"></nav>
+    <div class="container">
+        <h1> Weather </h1>
+        <p> Get the current weather for your destination!</p>
+
+        <form action="/get-weather"  method="post" style="max-width: 600 px">
+            <label for="vacationName">Enter Vacation City, State(if USA), and Country (uses commas, and no spaces):</label>
+            <input id="vacationName" name="vacationName" th:value="${#strings.replace(vacationName, ' ', '%20')}" required type="text">
+            <button type="submit">Get Weather</button>
+        </form>
+    </div>
+
+</body>
+</html>

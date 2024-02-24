@@ -1,42 +1,74 @@
 package org.launchcode.professionalprocrastinators.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.*;
 
+import java.util.ArrayList;
 import java.util.List;
-
+//This serves as a model for profile, but also for other Controllers especially for auth.
 
 @Entity
-public class User {
-    @Id
-    @GeneratedValue
-    private int id;
+public class User extends AbstractEntity{
+
+    private static User user;
+
 
     @OneToMany(mappedBy = "user")
     private List<Likes> likes;
 
-
-    @NotNull
+    @NotBlank
+    @Size(min = 3, max = 16)
        private String username;
-    @NotNull
-        private String password;
-    @NotNull
-       private String name;
-    @NotNull
-        private String email;
-    @NotNull
-        private String location;
-        private int numOfVacations;
 
-    public int getId() {
-        return id;
+    @NotBlank
+    private String name;
+
+    @NotBlank
+    @Email(message = "Email must be valid.")
+    private String email;
+
+    @NotBlank
+    private String passwordHash;
+
+    private String location;
+
+    private int numOfVacations;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL) // CascadeType.ALL makes it so that if the user is deleted, it will delete the packing lists as well. Update, create and everytihng is updated as well
+    private List<PackingList> packingLists;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Rewards> rewardsList;
+
+    //No Args constructor for validation
+    public User(){
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public User(@NotNull String username, @NotNull String name, @NotNull String email, @NotNull String password) {
+        this.username = username;
+        this.name = name;
+        this.email = email;
+        this.passwordHash = encoder.encode(password);
+    }
+
+    public List<PackingList> getPackingLists() {
+        return packingLists;
+    }
+
+    public void setPackingLists(List<PackingList> packingLists) {
+        this.packingLists = packingLists;
+    }
+
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+    public Boolean isMatchingPassword(String password){
+        return encoder.matches(password, passwordHash);
     }
 
     public String getUsername() {
@@ -47,12 +79,12 @@ public class User {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 
     public String getName() {
@@ -86,9 +118,13 @@ public class User {
     public void setNumOfVacations(int numOfVacations) {
         this.numOfVacations = numOfVacations;
     }
+
     @Override
     public String toString() {
         return "Username: '" + username + "', Name: '" + name + "', Location: '" + location + "', Vacations Taken: " + numOfVacations;
+    }
+
+    public void setId(int i) {
     }
 }
 

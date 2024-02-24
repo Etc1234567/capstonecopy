@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head}"></head>
+
+<body>
+<nav th:replace="~{fragments :: header}"></nav>
+
+<div class="container">
+    <h1> Delete Trip Inspiration </h1>
+    <form method="post">
+        <div class="form-group">
+            <th:block th:each="activity : ${activities}">
+                <input type="radio" name="deletedActivity" th:value="${activity.id}">
+                <label th:text="${activity.title}"></label><br>
+            </th:block>
+        </div>
+
+        <input type="submit" value="Delete Activity" class="btn btn-danger">
+    </form>
+
+</div>
+
+</body>
+</html>

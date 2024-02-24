@@ -18,6 +18,7 @@ public class Activity {
 
     private String notes;
 
+//    This is created using the embedUrl function below. Embedurl is a formatted link used to display the videos in a iFrame.
     private String embedUrl;
 
     public String getTitle() {
@@ -75,6 +76,8 @@ public class Activity {
                 '}';
     }
 
+
+//    This method takes the user provided YouTube URL and formats it so it will work in a Youtube embed link. It splits the video id from the url and passes it into an embed link.
     public String embedUrl(String url) {
         String[] splitUrl = url.split("=", 0);
         String embedCode = splitUrl[1];

@@ -1,19 +1,22 @@
 package org.launchcode.professionalprocrastinators.models.data;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+
+import jakarta.servlet.http.*;
 import org.launchcode.professionalprocrastinators.models.User;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends CrudRepository<User,Integer> {
+public interface UserRepository extends CrudRepository<User, Integer> {
 
 
-    Optional<User> findById(int id);
+    User findById(int id);
 
+    User findByUsername(String username);
 
-    Optional<User> findByUsername(String username);
+    User findByEmail(String email);
+
 }

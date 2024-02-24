@@ -1,0 +1,36 @@
+.video-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr 1fr 1fr ;
+    margin: auto;
+    gap: 10px;
+}
+
+.video-container iframe {
+    min-width: 100%;
+    min-height: 100%;
+    margin: 10px;
+    width: auto;
+    height: auto;
+}
+
+.countdownForm {
+    margin: auto;
+}
+
+.indexHeader {
+    margin-top:50px;
+}
+
+.activityNav {
+    margin-top:50px;
+    margin-bottom:50px;
+}
+
+.indexNav{
+    margin-bottom: 50px;
+}
+
+.countdownSection{
+    margin-bottom: 50px;
+}

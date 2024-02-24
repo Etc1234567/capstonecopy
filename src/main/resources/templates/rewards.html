@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>My Rewards</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+  <h1 class="mb-4">My Rewards</h1>
+
+  <!-- display the username -->
+  <h2 th:text="${user.username}"></h2>
+
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+    <tr>
+      <th>Member Name</th>
+      <th>Points Earned</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="reward : ${rewardsList}">
+      <td th:text="${reward.name}"></td>
+      <td th:text="${reward.points}"></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Add a button for awarding 4 points for proof of concept, does not redirect properly once pressed-->
+  <form th:action="@{/rewards/awardPoints}" method="post">
+    <button type="submit" class="btn btn-primary">Free Points (temporary)</button>
+  </form>
+
+</div>
+
+</body>
+</html>
