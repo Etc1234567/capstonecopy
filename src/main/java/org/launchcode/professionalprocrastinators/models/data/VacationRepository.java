@@ -23,8 +23,6 @@ public interface VacationRepository extends CrudRepository<Vacation,Integer> {
 
     List<Vacation> findByVacationDate(LocalDateTime vacationDate);
 
-    List<Vacation> findByVisibility(String visibility);
-
     List<Vacation> findByCityAndCountry(String city, String country);
      @NotNull List<Vacation> findAll();
 }

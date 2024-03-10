@@ -15,15 +15,8 @@ public class Vacation {
     @GeneratedValue
     private int id;
 
-    @OneToMany(mappedBy = "vacation")
-    private List<Likes> likes;
     @OneToMany
     private List<Activity> activities = new ArrayList<>();
-
-
-//    @ManyToOne
-//    @JoinColumn(name = "playlist_id")
-    private String spotifyLink;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -36,22 +29,6 @@ public class Vacation {
     private String state;
 
     private LocalDateTime vacationDate;
-
-
-//    Visibility will be used for a future feature, to display or hide vacations based on user privacy preferences.
-    private String visibility;
-
-    @ManyToOne
-    @JoinColumn(name = "packing_list_id")
-    private PackingList packingList;
-
-    public String getVisibility() {
-        return visibility;
-    }
-
-    public void setVisibility(String visibility) {
-        this.visibility = visibility;
-    }
 
     @Override
     public String toString() {
@@ -87,14 +64,6 @@ public class Vacation {
         this.state = state;
     }
 
-    public PackingList getPackingList() {
-        return packingList;
-    }
-
-    public void setPackingList(PackingList packingList) {
-        this.packingList = packingList;
-    }
-
     public String getCountry() {
         return country;
     }
@@ -114,12 +83,11 @@ public class Vacation {
         return id;
     }
 
-    public Vacation(String city, String country, String state, LocalDateTime vacationDate, String visibility) {
+    public Vacation(String city, String country, String state, LocalDateTime vacationDate) {
         this.city = city;
         this.country=country;
         this.state= state;
         this.vacationDate=vacationDate;
-        this.visibility=visibility;
     }
 
     public Vacation() {}
