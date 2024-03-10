@@ -15,8 +15,6 @@
         <h2 class="viewHeader" th:text="${'My Vacation To: ' + vacation.city + ', ' + vacation.country}">View Vacation</h2>
         <ul>
 
-<!--            State is optional, so this only displays if the user filled that field out.-->
-
             <li th:if="${vacation.state != ''}" th:text="${vacation.state}"></li>
 
 <!--            The temporals.format was used to format vacationDate to a more user-friendly display-->
@@ -27,8 +25,6 @@
     </section>
 
     <section class="countdownSection">
-
-<!--        This first div contains the styling for the countdown widget and links to the tickcounter site-->
 
         <div id="countdownContainer" style="display: none;">
             <a data-type="countdown"
@@ -43,8 +39,6 @@
                href="//www.tickcounter.com"
             >Countdown</a>
         </div>
-
-<!--        The js code below pulls the vacation date from the vacation object and passes it into the countdown function. The loadTickCounterStript is logic provided by the tickcounter widget to create a countdown from the provided date.-->
 
         <script th:inline="javascript">
             document.addEventListener("DOMContentLoaded", function() {
@@ -81,11 +75,6 @@
 
     <!-- TO-DO: Add local time API-->
 
-    <!-- TO-DO: Add Spotify API-->
-    <!--<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/42AymwrLaxhimExJMV3xFw?utm_source=generator"-->
-    <!--        width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">-->
-    <!--</iframe>-->
-
 
         <section class="video-container">
 
@@ -99,8 +88,6 @@
     <section class="notes">
         <h2>Notes</h2>
         <ul th:each="activity:${activities}">
-
-<!--            Notes are also optional, so they only display if they are provided.-->
 
             <li th:unless="${activity.notes.isEmpty()}" class="videoCaption" th:text="${activity.title}+ ': ' + ${activity.notes}"></li>
         </ul>
