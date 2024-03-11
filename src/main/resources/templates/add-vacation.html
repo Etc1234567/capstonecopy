@@ -9,11 +9,13 @@
 <div class="container">
     <h1> Add Vacation </h1>
 <form method="post" style="max-width:600 px">
+
+    <label for="countries">Select your country: </label>
+    <select id = "countries" name="countries"></select>
+    <script src="/js/countryapi.js"></script>
+
     <label for="city">City</label>
     <input type="text" id="city" name="vacationName"><br>
-
-    <label for="country">Country</label>
-    <input type="text" id="country" name="vacationCountry"></br>
 
     <label for="state">State or Province</label>
     <input type="text" id="state" name="vacationState"><br>

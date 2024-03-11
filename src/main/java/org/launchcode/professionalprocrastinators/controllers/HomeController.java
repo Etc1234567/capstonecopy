@@ -52,11 +52,11 @@ public class HomeController {
 
     @PostMapping("add-vacation")
     public String processAddVacationForm(@RequestParam String vacationName,
-                                         @RequestParam String vacationCountry,
+                                         @RequestParam String countries,
                                          @RequestParam(required = false) String vacationState,
                                          @RequestParam(required = false) LocalDateTime vacationDate) {
 
-            vacationRepository.save(new Vacation(vacationName, vacationCountry, vacationState, vacationDate));
+            vacationRepository.save(new Vacation(vacationName, countries, vacationState, vacationDate));
             return "redirect:";
     }
 
@@ -85,7 +85,7 @@ public class HomeController {
     @PostMapping("edit-vacation")
     public String processEditVacationForm(@RequestParam int selectedVacation,
                                           @RequestParam String vacationName,
-                                          @RequestParam String vacationCountry,
+                                          @RequestParam String countries,
                                           @RequestParam (required =false) String vacationState,
                                           @RequestParam LocalDateTime vacationDate) {
 
@@ -93,7 +93,7 @@ public class HomeController {
 
 //        For now, the user must re-enter all of their desired vacation information to update the record. In the future, we will have the site auto-fill this information and they will only need to update what is incorrect.
             editedVacation.setCity(vacationName);
-            editedVacation.setCountry(vacationCountry);
+            editedVacation.setCountry(countries);
             editedVacation.setState(vacationState);
             editedVacation.setVacationDate(vacationDate);
             vacationRepository.save(editedVacation);

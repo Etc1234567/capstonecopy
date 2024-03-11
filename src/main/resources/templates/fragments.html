@@ -21,7 +21,7 @@
 <!--the notLoggedIn variable is always true, but only injected in the GET for login controller, so by default everywhere but the login page it is false/null.-->
     <ul class="navbar-nav">
         <li class="nav-item" th:unless="${notLoggedIn}"><a class="nav-link" href="/profile">My Profile</a></li>&nbsp;
-        <li class="nav-item" th:unless="${notLoggedIn}"><a class="nav-link" href="/get-weather">Weather</a></li>
+
     </ul>
     <ul class="navbar-nav">
         <li class="nav-item" th:unless="${notLoggedIn}"><a class="nav-link" href="/logout">Log out</a></li>
