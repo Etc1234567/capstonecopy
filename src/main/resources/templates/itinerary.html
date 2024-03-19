@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head}"></head>
+
+<body>
+<nav th:replace="~{fragments :: header}"></nav>
+
+<div class="container">
+    <h1> Add Things to Your Itinerary </h1>
+
+    <form method="post" style="max-width:600 px">
+
+        <div class="form-group">
+            <label for="dateTime">Please enter the date and time of the itinerary item: </label>
+            <input type="datetime-local" id="dateTime" name="dateTime">
+        </div>
+
+        <button type="submit" class="btn btn-info">Create Itinerary!</button>
+    </form>
+</div>
+
+</body>
+</html>
