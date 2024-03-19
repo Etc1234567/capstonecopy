@@ -1,6 +1,8 @@
 package org.launchcode.professionalprocrastinators.controllers;
 
+import org.launchcode.professionalprocrastinators.models.Itinerary;
 import org.launchcode.professionalprocrastinators.models.Vacation;
+import org.launchcode.professionalprocrastinators.models.data.ItineraryRepository;
 import org.launchcode.professionalprocrastinators.models.data.VacationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +17,7 @@ import java.time.LocalDateTime;
 public class ItineraryController {
 
     @Autowired
-    private VacationRepository vacationRepository;
+    private ItineraryRepository itineraryRepository;
 
     @Autowired
     UserAuthentication userAuthentication;
@@ -23,17 +25,17 @@ public class ItineraryController {
     @GetMapping("/itinerary")
     public String viewItinerary(Model model) {
         model.addAttribute("title", "Create Itinerary");
-        model.addAttribute("vacations", vacationRepository.findAll());
+        model.addAttribute("itinerary", itineraryRepository.findAll());
         return "itinerary";
     }
 
-    @PostMapping("/itinerary")
-    public String processAddItinerary(@RequestParam String vacationName,
-                                         @RequestParam String countries,
-                                         @RequestParam(required = false) String vacationState,
-                                         @RequestParam(required = false) LocalDateTime vacationDate) {
-
-        vacationRepository.save(new Vacation(vacationName, countries, vacationState, vacationDate));
-        return "redirect:";
-    }
+//    @PostMapping("/itinerary")
+//    public String processAddItinerary(@RequestParam LocalDateTime dateTime,
+//                                         @RequestParam String location,
+//                                         @RequestParam(required = false) String notes,
+//                                         @RequestParam(required = false) Vacation linkedVacation) {
+//
+//        itineraryRepository.save(new Itinerary(dateTime, location, notes, linkedVacation));
+//        return "redirect:";
+//    }
 }

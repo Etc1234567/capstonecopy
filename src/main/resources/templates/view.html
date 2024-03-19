@@ -12,16 +12,8 @@
 
     <section class="vacationInfo">
 
-        <h2 class="viewHeader" th:text="${'My Vacation To: ' + vacation.city + ', ' + vacation.country}">View Vacation</h2>
-        <ul>
+        <h1 class="viewHeader" th:text="${'My Vacation To ' + vacation.city + ', ' + vacation.country + ' on ' + #temporals.format(vacation.vacationDate, 'MM-dd-yyyy')}">View Vacation</h1>
 
-            <li th:if="${vacation.state != ''}" th:text="${vacation.state}"></li>
-
-<!--            The temporals.format was used to format vacationDate to a more user-friendly display-->
-
-            <li th:text="${#temporals.format(vacation.vacationDate, 'MM-dd-yyyy')}"></li>
-
-        </ul>
     </section>
 
     <section class="countdownSection">
@@ -71,8 +63,25 @@
     </section>
 
     <!-- TO-DO: Add local time API or widget-->
+<section class="itinerary">
+    <h1> Itinerary:</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Plan of Action</th>
+        </tr>
+        </thead>
+<!--        <tr th:each="vacation: ${vacations}">-->
+<!--            <td>-->
+<!--                <a th:text="${vacation.city}" th:href="@{'/view/' + ${vacation.id}}"> </a>-->
+<!--            </td>-->
+<!--        </tr>-->
+    </table>
+</section>
 
 
+
+    <h1>Trip Inspiration: </h1><br>
         <section class="video-container">
 
             <div th:each="activity: ${activities}">

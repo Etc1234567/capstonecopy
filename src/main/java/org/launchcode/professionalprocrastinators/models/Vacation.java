@@ -16,6 +16,9 @@ public class Vacation {
     private int id;
 
     @OneToMany
+    private List<Itinerary> agendaItems = new ArrayList<>();
+
+    @OneToMany
     private List<Activity> activities = new ArrayList<>();
 
     @ManyToOne
