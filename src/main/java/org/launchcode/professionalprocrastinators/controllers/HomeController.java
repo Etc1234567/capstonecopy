@@ -2,8 +2,10 @@ package org.launchcode.professionalprocrastinators.controllers;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.launchcode.professionalprocrastinators.models.Activity;
+import org.launchcode.professionalprocrastinators.models.Itinerary;
 import org.launchcode.professionalprocrastinators.models.User;
 import org.launchcode.professionalprocrastinators.models.data.ActivityRepository;
+import org.launchcode.professionalprocrastinators.models.data.ItineraryRepository;
 import org.launchcode.professionalprocrastinators.models.data.VacationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,9 @@ public class HomeController {
 
     @Autowired
     private ActivityRepository activityRepository;
+
+    @Autowired
+    private ItineraryRepository itineraryRepository;
 
     @Autowired
     UserAuthentication userAuthentication;
@@ -147,8 +152,11 @@ public class HomeController {
     @GetMapping("/view/{vacationId}")
     public String displayViewVacation(Model model, @PathVariable int vacationId) {
 
+        model.addAttribute("agendaItems", itineraryRepository.findAll());
+
         Optional<Vacation> optVacation = vacationRepository.findById(vacationId);
         ArrayList<Activity> filteredActivities = new ArrayList<>();
+        ArrayList<Itinerary> filteredAgenda = new ArrayList<>();
 
         if (optVacation.isPresent()) {
             Vacation vacation = (Vacation) optVacation.get();
@@ -164,13 +172,22 @@ public class HomeController {
             }
             model.addAttribute("activities", filteredActivities);
 
+            for (Itinerary itinerary: itineraryRepository.findAll()){
+                Vacation currentVacation = itinerary.getLinkedVacation();
+                int currentId = currentVacation.getId();
+
+                if (currentId == vacationId) {
+                    filteredAgenda.add(itinerary);
+                }
+            }
+            model.addAttribute("filteredAgendaItems", filteredAgenda);
+
             return "view"; }
         else {
             return "redirect:../";
         }
 
     }
-
 
 }
 

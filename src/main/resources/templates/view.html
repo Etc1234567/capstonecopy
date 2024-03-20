@@ -65,18 +65,31 @@
     <!-- TO-DO: Add local time API or widget-->
 <section class="itinerary">
     <h1> Itinerary:</h1>
+
+<!--    <p th:if="${vacation.agendaItems}">Hmm, looks like we haven't planned this trip yet.</p>-->
+
     <table class="table table-striped">
         <thead>
         <tr>
             <th>Plan of Action</th>
         </tr>
         </thead>
-<!--        <tr th:each="vacation: ${vacations}">-->
-<!--            <td>-->
-<!--                <a th:text="${vacation.city}" th:href="@{'/view/' + ${vacation.id}}"> </a>-->
-<!--            </td>-->
-<!--        </tr>-->
+        <tr>
+            <td>Date and Time</td>
+            <td>Address</td>
+            <td>Notes</td>
+        </tr>
+        <tr th:each="agendaItem: ${filteredAgendaItems}">
+
+            <td th:text="${#temporals.format(agendaItem.dateTime, 'MM-dd HH:mm')}">|</td>
+            <td th:text="${agendaItem.location}">|</td>
+            <td th:text="${agendaItem.notes}"></td>
+
+        </tr>
     </table>
+
+    <a th:href="@{'/itinerary'}" class="btn btn-info" role="button">Add More Itinerary Items!</a>&nbsp;
+
 </section>
 
 

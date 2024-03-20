@@ -43,6 +43,10 @@ public class Vacation {
                 '}';
     }
 
+    public List<Itinerary> getAgendaItems() {
+        return agendaItems;
+    }
+
     public List<Activity> getActivities() {
         return activities;
     }

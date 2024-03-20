@@ -7,16 +7,31 @@
 <nav th:replace="~{fragments :: header}"></nav>
 
 <div class="container">
-    <h1> Add Things to Your Itinerary </h1>
+    <h1> Add To Your Itinerary </h1>
+    <p> Enter the information below to add items to your trip's itinerary! </p>
 
     <form method="post" style="max-width:600 px">
 
         <div class="form-group">
-            <label for="dateTime">Please enter the date and time of the itinerary item: </label>
+            <p> Which vacation are you adding this itinerary to? </p>
+            <th:block th:each="vacation : ${vacations}">
+                <input type="radio" name="linkedVacation" th:value="${vacation.id}">
+                <label th:text="${vacation.city}"></label><br>
+            </th:block>
+        </div>
+
+        <div class="form-group">
+            <label for="dateTime">Please enter the date and time of the activity: </label>
             <input type="datetime-local" id="dateTime" name="dateTime">
         </div>
 
-        <button type="submit" class="btn btn-info">Create Itinerary!</button>
+        <label for="location">Please enter the address: </label>
+        <input type="text" id="location" name="location"><br>
+
+        <label for="notes">Please enter any notes: </label>
+        <input type="text" id="notes" name="notes"><br>
+
+        <button type="submit" class="btn btn-info">Add Itinerary Item</button>
     </form>
 </div>
 
